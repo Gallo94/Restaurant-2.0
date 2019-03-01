@@ -8,6 +8,12 @@ public class Food
     // Dish's name
     private String description;
 
+    public Food()
+    {
+        this.id = 0;
+        this.description = "";
+    }
+
     public Food(int id, String description)
     {
         this.id = id;

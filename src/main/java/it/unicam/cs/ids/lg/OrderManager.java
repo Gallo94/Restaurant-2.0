@@ -31,7 +31,6 @@ public class OrderManager
     // Show home's interface
     public void promptHome()
     {
-        Scanner scan = new Scanner(System.in);
         int choice = 0;
 
         do
@@ -47,6 +46,8 @@ public class OrderManager
             System.out.println("+========+===============+");
             System.out.println();
             System.out.print("Insert a number from 1 to 4: ");
+
+            Scanner scan = new Scanner(System.in);
 
             try
             {
@@ -76,6 +77,9 @@ public class OrderManager
             {
                 System.out.println("Character not allowed");
             }
+            finally {
+                scan.close();
+            }
         }
         while (choice != 4);
     }
@@ -99,7 +103,6 @@ public class OrderManager
     public void promptNewOrderMenu()
     {
         Order order = new Order();
-        Scanner scan = new Scanner(System.in);
         int choice = 0;
         do
         {
@@ -117,7 +120,8 @@ public class OrderManager
             System.out.println();
             printOrder(order);
             System.out.print("Insert a number from 1 to 4: ");
-            
+
+            Scanner scan = new Scanner(System.in);           
             try
             {
                 do 
@@ -154,15 +158,17 @@ public class OrderManager
             {
                 System.out.println("Character not allowed");
             }
+            finally {
+                scan.close();
+            }
         }
         while (choice != 4 && choice != 3);
     }
 
     // Add dish to order
     public void promptAddDish(Order order)
-    {
-        Scanner scan = new Scanner(System.in);
-        
+    {   
+        Scanner scan = new Scanner(System.in);    
         System.out.println("");
         System.out.print("ID : ");
         int choiceId = Integer.parseInt(scan.nextLine());
@@ -186,6 +192,8 @@ public class OrderManager
         {
             System.out.println("Dish wrongs");
         }
+
+        scan.close();
     }
 
     // Remove dish from order
@@ -216,6 +224,8 @@ public class OrderManager
                 }
             }
         }
+
+        scan.close();
     }
 
     // Print dish in order
@@ -237,7 +247,6 @@ public class OrderManager
             System.out.println("No orders");
             return;
         }
-        Scanner scan = new Scanner(System.in);
 
         System.out.println();
         System.out.println("+-------------+");
@@ -250,6 +259,7 @@ public class OrderManager
         System.out.println();
 
         System.out.print("Insert order number or press [e] to exit: ");
+        Scanner scan = new Scanner(System.in);
 
         try
         {
@@ -270,13 +280,14 @@ public class OrderManager
         {
             System.out.println("Character not allowed");
         }
+        finally {
+            scan.close();
+        }
     }
 
     // Show order's details
     public void promptOrderDetails(Order order)
-    {
-        Scanner scan = new Scanner(System.in);
-        
+    {       
         do
         {
             System.out.println();
@@ -300,7 +311,8 @@ public class OrderManager
             }
 
             System.out.println("Insert prepared dish's number or press [e] to exit: ");
-            
+            Scanner scan = new Scanner(System.in);
+
             try
             {
                 int dishId;
@@ -319,6 +331,9 @@ public class OrderManager
             catch(NumberFormatException e)
             {
                 System.out.println("Character not allowed");
+            }
+            finally {
+                scan.close();
             }
         }
         while (!order.checkPrepared());

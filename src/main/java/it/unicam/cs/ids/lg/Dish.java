@@ -9,6 +9,12 @@ public class Dish
     // Status order
     private boolean ready;
 
+    public Dish()
+    {
+        this.count = 0;
+        this.food = null;
+    }
+
     public Dish(int count, Food food)
     {
         this.count = count;
