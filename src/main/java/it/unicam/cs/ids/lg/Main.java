@@ -18,17 +18,17 @@ public class Main {
 
     public Main() throws JsonParseException, JsonMappingException, IOException {
         menu = new ArrayList<>();
-        menu.add(new Food(0, " Spaghetti alla Carbonara "));
-        menu.add(new Food(1, " Tonnarelli Cacio e Pepe  "));
-        menu.add(new Food(2, " Bucatini alla Amatriciana"));
-        menu.add(new Food(3, " Abbacchio al Forno       "));
-        menu.add(new Food(4, " Saltimbocca alla Romana  "));
-        menu.add(new Food(5, " Coda alla Vaccinara      "));
-        menu.add(new Food(6, " Insalta Mista            "));
-        menu.add(new Food(7, " Carciofo alla Romana     "));
-        menu.add(new Food(8, " Patate al Forno          "));
-        menu.add(new Food(9, " Tiramisu                 "));
-        menu.add(new Food(10, "Caffe                    "));
+        menu.add(new Food(0, "Spaghetti alla Carbonara"));
+        menu.add(new Food(1, "Tonnarelli Cacio e Pepe"));
+        menu.add(new Food(2, "Bucatini alla Amatriciana"));
+        menu.add(new Food(3, "Abbacchio al Forno"));
+        menu.add(new Food(4, "Saltimbocca alla Romana"));
+        menu.add(new Food(5, "Coda alla Vaccinara"));
+        menu.add(new Food(6, "Insalta Mista"));
+        menu.add(new Food(7, "Carciofo alla Romana"));
+        menu.add(new Food(8, "Patate al Forno"));
+        menu.add(new Food(9, "Tiramisu"));
+        menu.add(new Food(10,"Caffe"));
 
         // Restores previous state
         Json json = new Json();
@@ -54,17 +54,16 @@ public class Main {
 
         do {
             System.out.println();
-            System.out.println("+========================+");
-            System.out.println("|          HOME          |");
-            System.out.println("|--------+---------------|");
-            System.out.println("|  [1]   |  MENU         |");
-            System.out.println("|  [2]   |  NEW ORDER    |");
-            System.out.println("|  [3]   |  ORDERS       |");
-            System.out.println("|  [4]   |  FREE TABLE   |");
-            System.out.println("|  [5].  |  EXIT         |");
-            System.out.println("+========+===============+");
-            System.out.println();
-            System.out.print("Insert a number from 1 to 5: ");
+            System.out.format("+====================+%n");
+            System.out.format("|        HOME        |%n");
+            System.out.format("+====================+%n");
+            System.out.format("|  1    MENU         |%n");
+            System.out.format("|  2    NEW ORDER    |%n");
+            System.out.format("|  3    ORDERS       |%n");
+            System.out.format("|  4    FREE TABLE   |%n");
+            System.out.format("|  5    EXIT         |%n");
+            System.out.format("+====================+%n");
+            System.out.format("Insert number [1-5]: ");
 
             try {
                 do {
@@ -97,28 +96,45 @@ public class Main {
 
     // Print restaurant's menu
     public void printMenu() {
-        System.out.println("");
-        System.out.println("+================================+");
-        System.out.println("|               MENU             |");
-        System.out.println("|================================|");
+        String leftAlignFormat = "| %-2d | %-30s |%n";
+
+        System.out.println();
+        System.out.format("+=====================================+%n");
+        System.out.format("|                 MENU                |%n");
+        System.out.format("+=====================================+%n");
 
         for (Food food : menu) {
-            System.out.println("| " + food.getId() + " | " + food.getDescription() + " |");
+            System.out.format(leftAlignFormat, food.getId(), food.getDescription());
         }
-        System.out.println("+================================+");
+        System.out.format("+=====================================+%n");
+        System.out.println();
     }
 
     public Table promptSelectTable() {
         int numTables = tableManager.getTables().size();
         int choice = 0;
 
-        for (Table table : tableManager.getTables())
-            System.out.println("Table " + table.getId() + " - " + (table.getOrder() == null ? "Free" : "Busy"));
+        String leftAlignFormat = "| %-5s %-2d  |  %-4s  |%n";
 
-        System.out.println("Select a table [1 - " + numTables + "]: ");
+        System.out.println();
+        System.out.format("+====================+%n");
+        System.out.format("|       TABLES       |%n");
+        System.out.format("+====================+%n");
+
+        for (Table table : tableManager.getTables())
+            System.out.format(leftAlignFormat,"Table", table.getId(), (table.getOrder() == null ? "Free" : "Busy"));
+            // System.out.println("Table " + table.getId() + " - " + (table.getOrder() == null ? "Free" : "Busy"));
+
+            System.out.format("+====================+%n");
+            System.out.println("Select a table [1-" + numTables + "] or press [e] to exit: ");
 
         try {
             do {
+                // TODO
+                // String nextLine = scan.nextLine();
+                // if (nextLine.compareTo("e") == 0) 
+                //     return;
+                    
                 choice = Integer.parseInt(scan.nextLine());
             } while ((choice < 1 || choice > numTables));
         } catch (NumberFormatException e) {
@@ -143,17 +159,17 @@ public class Main {
             clearScreen();
             printMenu();
             System.out.println();
-            System.out.println("+========================+");
-            System.out.println("|         ORDER          |");
-            System.out.println("|--------+---------------|");
-            System.out.println("|  [1]   |  ADD DISH     |");
-            System.out.println("|  [2]   |  DEL DISH     |");
-            System.out.println("|  [3]   |  CONFIRM      |");
-            System.out.println("|  [4]   |  BACK         |");
-            System.out.println("+========+===============+");
+            System.out.println("+====================+");
+            System.out.println("|        ORDER       |");
+            System.out.println("+====================+");
+            System.out.println("|  1    ADD DISH     |");
+            System.out.println("|  2    DEL DISH     |");
+            System.out.println("|  3    CONFIRM      |");
+            System.out.println("|  4    BACK         |");
+            System.out.println("+====================+");
             System.out.println();
             printOrder(order);
-            System.out.print("Insert a number from 1 to 4: ");
+            System.out.print("Insert number [1-4]: ");
 
             try {
                 do {
@@ -238,9 +254,15 @@ public class Main {
 
     // Print dish in order
     public void printOrder(Order order) {
+        String leftAlignFormat = "| %-2d | %-3d | %-30s|%n";
+
+        System.out.format("+==========================================+%n");
+        System.out.format("| ID | QTY |          DESCRIPTION          |%n");
+        System.out.format("+==========================================+%n");
+
         for (Dish dish : order.getDishes().values()) {
-            System.out.println("-> " + " [QTY:" + dish.getCount() + "]" + " | " + "[ID:" + dish.getFood().getId() + "] "
-                    + dish.getFood().getDescription());
+            System.out.format(leftAlignFormat, dish.getFood().getId(), dish.getCount(), dish.getFood().getDescription());
+            System.out.format("+------------------------------------------+%n");
         }
         System.out.println();
     }
@@ -285,20 +307,23 @@ public class Main {
 
     // Show order's details
     public void promptOrderDetails(Order order) {
+        String leftAlignFormat = "| %-2d | %-3d | %-28s  %-1s |%n";
 
         do {
             System.out.println();
-            System.out.println("+===============================================+");
-            System.out.println("|                     DETAILS                   |");
-            System.out.println("|-----------------------------------------------|");
+            System.out.println("LEGEND:");
+            System.out.println(" - = cooking | x = ready");
+            System.out.println();
+            System.out.format("+=============================================+%n");
+            System.out.format("| ID | QTY |            DESCRIPTION           |%n");
+            System.out.format("+=============================================+%n");
 
             ArrayList<Dish> dishes = new ArrayList<>(order.getDishes().values());
             for (int i = 0; i < dishes.size(); i++) {
                 Dish dish = dishes.get(i);
-                System.out.println("|" + " [N:" + i + "] " + dish.getFood().getDescription() + " [QTY:"
-                        + dish.getCount() + "] " + (dish.getReady() ? "  X " : "  - ") + " |");
+                System.out.format(leftAlignFormat, i, dish.getCount(), dish.getFood().getDescription(), (dish.getReady() ? "X " : "- "));
+                System.out.format("+---------------------------------------------+%n");
             }
-            System.out.println("+===============================================+");
             System.out.println();
 
             if (order.checkPrepared()) {
