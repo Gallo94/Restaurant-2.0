@@ -63,7 +63,7 @@ public class Main {
             System.out.format("|  4    FREE TABLE   |%n");
             System.out.format("|  5    EXIT         |%n");
             System.out.format("+====================+%n");
-            System.out.format("Insert number [1-5]: ");
+            System.out.print("Insert number [1-5]: ");
 
             try {
                 do {
@@ -110,6 +110,7 @@ public class Main {
         System.out.println();
     }
 
+    // Show table's status
     public Table promptSelectTable() {
         int numTables = tableManager.getTables().size();
         int choice = 0;
@@ -123,18 +124,12 @@ public class Main {
 
         for (Table table : tableManager.getTables())
             System.out.format(leftAlignFormat,"Table", table.getId(), (table.getOrder() == null ? "Free" : "Busy"));
-            // System.out.println("Table " + table.getId() + " - " + (table.getOrder() == null ? "Free" : "Busy"));
-
             System.out.format("+====================+%n");
-            System.out.println("Select a table [1-" + numTables + "] or press [e] to exit: ");
+
+            System.out.print("Select a table [1-" + numTables + "]: ");
 
         try {
             do {
-                // TODO
-                // String nextLine = scan.nextLine();
-                // if (nextLine.compareTo("e") == 0) 
-                //     return;
-                    
                 choice = Integer.parseInt(scan.nextLine());
             } while ((choice < 1 || choice > numTables));
         } catch (NumberFormatException e) {
@@ -210,7 +205,7 @@ public class Main {
     // Add dish to order
     public void promptAddDish(Order order) {
 
-        System.out.println("");
+        System.out.println();
         System.out.print("ID : ");
         int choiceId = Integer.parseInt(scan.nextLine());
         System.out.print("QTY: ");
@@ -232,7 +227,7 @@ public class Main {
     // Remove dish from order
     public void promptRemoveDish(Order order) {
 
-        System.out.println("");
+        System.out.println();
         System.out.print("ID : ");
         int choiceId = Integer.parseInt(scan.nextLine());
         System.out.print("QTY: ");
@@ -289,6 +284,7 @@ public class Main {
 		}
     }
 
+    // Choose the table to be released
     public void promptFreeTable() {
         Table table = promptSelectTable();
         if (table.isFree()) {
@@ -302,7 +298,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Table " + table.getId() + " freed!");
+        System.out.println("Table " + table.getId() + " is released!");
     }
 
     // Show order's details
@@ -331,7 +327,7 @@ public class Main {
                 return;
             }
 
-            System.out.println("Insert prepared dish's number or press [e] to exit: ");
+            System.out.print("Insert prepared dish's number or press [e] to exit: ");
 
             try {
                 int dishId;

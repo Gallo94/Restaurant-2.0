@@ -16,11 +16,13 @@ public class TableManager
         this.tables = tables;
     }
 
+    // Set restaurant's tables
     public void setTables(ArrayList<Table> tables)
     {
         this.tables = tables;
     }
 
+    // Return restaurant's tables
     public ArrayList<Table> getTables()
     {
         return tables;
