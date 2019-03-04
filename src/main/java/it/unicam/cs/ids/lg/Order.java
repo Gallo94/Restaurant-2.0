@@ -12,6 +12,11 @@ public class Order
         this.dishes = new HashMap<Integer, Dish>();
     }
 
+    public Order(Order order)
+    {
+        this.dishes = new HashMap<Integer, Dish>(order.dishes);
+    }
+
     // Add dish to order
     // if it's already then count + num
     public void addDish(int id, Dish dish, int num)

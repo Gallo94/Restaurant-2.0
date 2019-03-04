@@ -3,6 +3,7 @@ package it.unicam.cs.ids.lg;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -61,9 +62,10 @@ public class Main {
             System.out.format("|  2    NEW ORDER    |%n");
             System.out.format("|  3    ORDERS       |%n");
             System.out.format("|  4    FREE TABLE   |%n");
-            System.out.format("|  5    EXIT         |%n");
+            System.out.format("|  5    HISTORY      |%n");
+            System.out.format("|  6    EXIT         |%n");
             System.out.format("+====================+%n");
-            System.out.print("Insert number [1-5]: ");
+            System.out.print("Insert number [1-6]: ");
 
             try {
                 do {
@@ -83,15 +85,18 @@ public class Main {
                         promptFreeTable();
                         break;
                     case 5:
+                        history();
+                        break;
+                    case 6:
                         break;
                     default:
                         System.out.println("Wrong option");
                     }
-                } while (choice < 1 || choice > 5);
+                } while (choice < 1 || choice > 6);
             } catch (NumberFormatException e) {
                 System.out.println("Character not allowed");
             }
-        } while (choice != 5);
+        } while (choice != 6);
     }
 
     // Print restaurant's menu
@@ -292,7 +297,7 @@ public class Main {
             return;
         }
 
-        table.setOrder(null);
+        table.free();
         try {
             new Json().saveTables(tableManager);
         } catch (IOException e) {
@@ -347,6 +352,36 @@ public class Main {
 
         System.out.println();
         System.out.println("Order ready!");
+    }
+
+    public void history()
+    {
+        ArrayList<Table> tables = tableManager.getTables();
+        for (Table table : tables)
+        {
+            System.out.println("----------------------------");
+            System.out.println("Table " + table.getId());
+            System.out.println("----------------------------");
+
+            if (table.getPreviousOrders() == null)
+                continue;
+
+            ArrayList<Order> orders = table.getPreviousOrders();
+            for (int i = 0; i < orders.size(); i++)
+            {
+                System.out.println("----------------------------");
+                System.out.println("Order " + i);
+                System.out.println("----------------------------");
+                Order order = orders.get(i);
+                HashMap<Integer, Dish> dishes = order.getDishes();
+                for (Map.Entry<Integer,Dish> entry : dishes.entrySet())
+                {
+                    Integer key = entry.getKey();
+                    Dish value = entry.getValue();
+                    System.out.println("* " + value.getFood().getDescription() + " -> " + value.getCount());
+                }
+            }
+        }
     }
 
     // Clear output console

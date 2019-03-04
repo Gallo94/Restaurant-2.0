@@ -1,0 +1,161 @@
+{
+    "tables": [{
+        "id": 1,
+        "numSeats": 2,
+        "order": null,
+        "previousOrders": [{
+            "dishes": {
+                "2": {
+                    "count": 2,
+                    "food": {
+                        "id": 2,
+                        "description": "Bucatini alla Amatriciana"
+                    },
+                    "ready": true
+                },
+                "3": {
+                    "count": 2,
+                    "food": {
+                        "id": 3,
+                        "description": "Abbacchio al Forno"
+                    },
+                    "ready": true
+                }
+            }
+        }, {
+            "dishes": {
+                "1": {
+                    "count": 50,
+                    "food": {
+                        "id": 1,
+                        "description": "Tonnarelli Cacio e Pepe"
+                    },
+                    "ready": true
+                },
+                "2": {
+                    "count": 50,
+                    "food": {
+                        "id": 2,
+                        "description": "Bucatini alla Amatriciana"
+                    },
+                    "ready": true
+                }
+            }
+        }, {
+            "dishes": {
+                "10": {
+                    "count": 1,
+                    "food": {
+                        "id": 10,
+                        "description": "Caffe"
+                    },
+                    "ready": true
+                }
+            }
+        }, {
+            "dishes": {
+                "0": {
+                    "count": 2,
+                    "food": {
+                        "id": 0,
+                        "description": "Spaghetti alla Carbonara"
+                    },
+                    "ready": true
+                },
+                "2": {
+                    "count": 4,
+                    "food": {
+                        "id": 2,
+                        "description": "Bucatini alla Amatriciana"
+                    },
+                    "ready": true
+                },
+                "5": {
+                    "count": 2,
+                    "food": {
+                        "id": 5,
+                        "description": "Coda alla Vaccinara"
+                    },
+                    "ready": true
+                },
+                "6": {
+                    "count": 2,
+                    "food": {
+                        "id": 6,
+                        "description": "Insalta Mista"
+                    },
+                    "ready": true
+                }
+            }
+        }],
+        "free": true
+    }, {
+        "id": 2,
+        "numSeats": 2,
+        "order": null,
+        "previousOrders": null,
+        "free": true
+    }, {
+        "id": 3,
+        "numSeats": 2,
+        "order": null,
+        "previousOrders": [{
+            "dishes": {
+                "0": {
+                    "count": 11,
+                    "food": {
+                        "id": 0,
+                        "description": "Spaghetti alla Carbonara"
+                    },
+                    "ready": true
+                }
+            }
+        }],
+        "free": true
+    }, {
+        "id": 4,
+        "numSeats": 4,
+        "order": null,
+        "previousOrders": null,
+        "free": true
+    }, {
+        "id": 5,
+        "numSeats": 4,
+        "order": null,
+        "previousOrders": null,
+        "free": true
+    }, {
+        "id": 6,
+        "numSeats": 8,
+        "order": null,
+        "previousOrders": [{
+            "dishes": {
+                "1": {
+                    "count": 2,
+                    "food": {
+                        "id": 1,
+                        "description": "Tonnarelli Cacio e Pepe"
+                    },
+                    "ready": true
+                },
+                "2": {
+                    "count": 3,
+                    "food": {
+                        "id": 2,
+                        "description": "Bucatini alla Amatriciana"
+                    },
+                    "ready": true
+                },
+                "10": {
+                    "count": 2,
+                    "food": {
+                        "id": 10,
+                        "description": "Caffe"
+                    },
+                    "ready": true
+                }
+            }
+        }],
+        "free": true
+    }]
+}

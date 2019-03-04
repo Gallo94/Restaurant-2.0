@@ -1,5 +1,7 @@
 package it.unicam.cs.ids.lg;
 
+import java.util.ArrayList;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -10,12 +12,14 @@ public class Table
     // Table's Number seats
     private int numSeats;
     private Order order;
+    private ArrayList<Order> previousOrders;
     
     public Table()
     {
         this.id = 0;
         this.numSeats = 0;
         this.order = null;
+        this.previousOrders = null;
     }
 
     public Table(final int id, final int numSeats)
@@ -23,6 +27,7 @@ public class Table
         this.id = id;
         this.numSeats = numSeats;
         this.order = null;
+        this.previousOrders = new ArrayList<>();
     }
     
     // Set table's ID
@@ -67,15 +72,29 @@ public class Table
         return this.order;
     }
 
+    public void setPreviousOrders(ArrayList<Order> previousOrders)
+    {
+        this.previousOrders = previousOrders;
+    }
+
+    public ArrayList<Order> getPreviousOrders()
+    {
+        return previousOrders;
+    }
+
     // Set table as free
     public void free()
     {
-        this.order = null;
+        if (previousOrders == null)
+            previousOrders = new ArrayList<>();
+            
+        previousOrders.add(new Order(order));
+        order = null;
     }
 
     // Check if table is free
     public boolean isFree()
     {
-        return this.order == null;
+        return order == null;
     }
 }

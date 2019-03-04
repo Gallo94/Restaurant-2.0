@@ -9,13 +9,13 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Json {
-    private static final String name = "data";
+    private static final String dataName = "data";
     private static final String extension = "json";
 
     private File data;
 
     public Json() throws IOException {
-        data = new File(name + "." + extension);
+        data = new File(dataName + "." + extension);
         data.createNewFile();
     }
 
