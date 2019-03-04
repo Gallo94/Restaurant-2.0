@@ -29,8 +29,9 @@ public class Json {
         try {
             return mapper.readValue(data, TableManager.class);
         } catch (IOException e) {
-            e.printStackTrace();
-            return new TableManager();
+            System.out.println("data.json: No file found or file empty");
         }
+
+        return new TableManager();
     }
 }
