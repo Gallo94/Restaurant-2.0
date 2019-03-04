@@ -19,17 +19,17 @@ public class Main {
 
     public Main() throws JsonParseException, JsonMappingException, IOException {
         menu = new ArrayList<>();
-        menu.add(new Food(0, "Spaghetti alla Carbonara"));
-        menu.add(new Food(1, "Tonnarelli Cacio e Pepe"));
-        menu.add(new Food(2, "Bucatini alla Amatriciana"));
-        menu.add(new Food(3, "Abbacchio al Forno"));
-        menu.add(new Food(4, "Saltimbocca alla Romana"));
-        menu.add(new Food(5, "Coda alla Vaccinara"));
-        menu.add(new Food(6, "Insalta Mista"));
-        menu.add(new Food(7, "Carciofo alla Romana"));
-        menu.add(new Food(8, "Patate al Forno"));
-        menu.add(new Food(9, "Tiramisu"));
-        menu.add(new Food(10,"Caffe"));
+        menu.add(new Food(0, "Spaghetti alla Carbonara", 10.0f));
+        menu.add(new Food(1, "Tonnarelli Cacio e Pepe", 8.0f));
+        menu.add(new Food(2, "Bucatini alla Amatriciana", 9.0f));
+        menu.add(new Food(3, "Abbacchio al Forno", 15.0f));
+        menu.add(new Food(4, "Saltimbocca alla Romana", 12.0f));
+        menu.add(new Food(5, "Coda alla Vaccinara", 20.0f));
+        menu.add(new Food(6, "Insalta Mista", 7.0f));
+        menu.add(new Food(7, "Carciofo alla Romana", 7.0f));
+        menu.add(new Food(8, "Patate al Forno", 6.0f));
+        menu.add(new Food(9, "Tiramisu", 8.0f));
+        menu.add(new Food(10,"Caffe", 1.0f));
 
         // Restores previous state
         Json json = new Json();
@@ -177,9 +177,11 @@ public class Main {
                     switch (choice) {
                     case 1:
                         promptAddDish(order);
+                        order.calculatePrice();
                         break;
                     case 2:
                         promptRemoveDish(order);
+                        order.calculatePrice();
                         break;
                     case 3:
                         if (order.getDishes().isEmpty()) {
