@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Order {
     // Dishes in order
     private HashMap<Integer, Dish> dishes;
+    // dish's price
     private float price;
 
     public Order() {
@@ -17,19 +18,20 @@ public class Order {
         this.price = order.price;
     }
 
+    // Set price for each dish
     public void setPrice(float price) {
         this.price = price;
     }
 
+    // Return price for each dish
     public float getPrice() {
         return price;
     }
 
-    public void calculatePrice()
-    {
+    // Calculate the bill
+    public void calculatePrice() {
         this.price = 0;
-        for (Dish dish : dishes.values())
-        {
+        for (Dish dish : dishes.values()) {
             this.price += dish.getFood().getPrice() * dish.getCount();
         }
     }

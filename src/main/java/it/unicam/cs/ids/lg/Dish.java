@@ -1,7 +1,6 @@
 package it.unicam.cs.ids.lg;
 
-public class Dish
-{
+public class Dish {
     // Amount dish
     private int count;
     // Food
@@ -9,52 +8,44 @@ public class Dish
     // Status order
     private boolean ready;
 
-    public Dish()
-    {
+    public Dish() {
         this.count = 0;
         this.food = null;
     }
 
-    public Dish(int count, Food food)
-    {
+    public Dish(int count, Food food) {
         this.count = count;
         this.food = food;
         this.ready = false;
     }
 
-    // Return amount's dish 
-    public int getCount()
-    {
+    // Return amount's dish
+    public int getCount() {
         return this.count;
     }
 
     // Set amount's dish
-    public void setCount(int count)
-    {
+    public void setCount(int count) {
         this.count = count;
     }
 
     // Return ordered dish
-    public Food getFood()
-    {
+    public Food getFood() {
         return this.food;
     }
 
     // Set dish in order
-    public void setFood(Food food)
-    {
+    public void setFood(Food food) {
         this.food = food;
     }
 
     // Return dish's status(ready)
-    public boolean getReady()
-    {
+    public boolean getReady() {
         return this.ready;
     }
-    
+
     // Set dish's status(ready)
-    public void setReady(boolean ready)
-    {
+    public void setReady(boolean ready) {
         this.ready = ready;
     }
 }
