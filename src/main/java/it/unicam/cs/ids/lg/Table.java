@@ -88,6 +88,7 @@ public class Table
         // Save to history
         if (previousOrders == null)
             previousOrders = new ArrayList<>();
+            
         previousOrders.add(new Order(order));
 
         // Delete
