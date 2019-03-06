@@ -23,7 +23,7 @@ In particolare, gestisco la sala e le possibili interazioni con la cucina. Dunqu
 - __Cuoco__.
 
 ## Documentazione
-All'interno di [Doc](https://github.com/Gallo94/Software-Engineering-Project/tree/master/Doc) è disponibile il progetto con tutta la documentazione richiesta.
+All'interno di _Doc_ è disponibile il progetto con tutta la documentazione richiesta.
 Per eseguire il progetto da terminale bisogna inserire questa stringa:
 __mvn exec:java -Dexec.mainClass="it.unicam.cs.ids.lg.Ui"__
 
