@@ -10,14 +10,14 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-public class Main {
+public class Ui {
 
     ArrayList<Food> menu;
     TableManager tableManager;
 
     static Scanner scan = new Scanner(System.in);
 
-    public Main() throws JsonParseException, JsonMappingException, IOException {
+    public Ui() throws JsonParseException, JsonMappingException, IOException {
         menu = new ArrayList<>();
         menu.add(new Food(0, "Spaghetti alla Carbonara", 10.0f));
         menu.add(new Food(1, "Tonnarelli Cacio e Pepe", 8.0f));
@@ -278,7 +278,7 @@ public class Main {
         Table table = promptSelectTable();
 
         if (table.isFree()) {
-            System.out.println("Table has got any order!");
+            System.out.println("Table hasn't got any order!");
             return;
         }
 
@@ -404,7 +404,7 @@ public class Main {
     // Bootloader
     public static void main(String[] args) {
         try {
-            new Main().promptHome();
+            new Ui().promptHome();
 
         } catch (IOException e) {
             e.printStackTrace();
